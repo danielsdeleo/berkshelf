@@ -59,7 +59,7 @@ module Berkshelf
       # @return [CachedCookbook]
       #   the installed cookbook
       def install(dependency)
-        if dependency.downloaded?
+        if dependency.installed?
           Berkshelf.formatter.use(dependency)
           dependency.cached_cookbook
         else
@@ -81,8 +81,8 @@ module Berkshelf
       def install_from_lockfile
         dependencies = lockfile.graph.locks.values
 
-        # Only construct the universe if we are going to download things
-        unless dependencies.all?(&:downloaded?)
+        # Only construct the universe if we are going to install things
+        unless dependencies.all?(&:installed?)
           build_universe
         end
 

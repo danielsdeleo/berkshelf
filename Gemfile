@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# https://github.com/berkshelf/berkshelf/issues/1448
+gem "celluloid", "= 0.16.0"
+
 gemspec
 
 group :guard do
